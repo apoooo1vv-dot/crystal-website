@@ -1,15 +1,3 @@
-cd /sdcard/Download/crystal-website
-
-# تجهيز الشعار داخل مجلد الموقع
-if [ -f "../crystal-logo-CyiVii2I.webp" ]; then
-  cp "../crystal-logo-CyiVii2I.webp" logo.webp
-elif [ -f "../logo.jpg" ]; then
-  cp "../logo.jpg" logo.jpg
-elif [ -f "../logo-1.jpg" ]; then
-  cp "../logo-1.jpg" logo.jpg
-fi
-
-cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -18,38 +6,23 @@ cat > index.html <<'EOF'
   <title>كريستال | حلول تمويلية موثوقة</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      font-family: Arial, Tahoma, sans-serif;
+      font-family:Arial,Tahoma,sans-serif;
       background:#f6f9ff;
       color:#102033;
       line-height:1.8;
       overflow-x:hidden;
     }
-
-    a{
-      text-decoration:none;
-    }
-
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
-    }
+    a{text-decoration:none}
+    .container{width:min(1180px,92%);margin:auto}
 
     header{
       position:sticky;
       top:0;
       z-index:99;
-      background:rgba(255,255,255,.94);
+      background:rgba(255,255,255,.96);
       backdrop-filter:blur(16px);
       border-bottom:1px solid #e8eef7;
     }
@@ -70,7 +43,7 @@ cat > index.html <<'EOF'
 
     .brand img{
       height:58px;
-      max-width:210px;
+      max-width:220px;
       object-fit:contain;
       display:block;
     }
@@ -105,9 +78,7 @@ cat > index.html <<'EOF'
       white-space:nowrap;
     }
 
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+    .btn:hover{transform:translateY(-2px)}
 
     .btn-primary{
       background:#12376f;
@@ -179,9 +150,7 @@ cat > index.html <<'EOF'
       margin-bottom:18px;
     }
 
-    .green{
-      color:#24c978;
-    }
+    .green{color:#24c978}
 
     .lead{
       color:#536273;
@@ -238,7 +207,7 @@ cat > index.html <<'EOF'
     }
 
     .card-logo{
-      width:170px;
+      width:185px;
       max-width:100%;
       display:block;
       margin:0 0 22px auto;
@@ -258,9 +227,7 @@ cat > index.html <<'EOF'
       margin-bottom:8px;
     }
 
-    .muted{
-      color:#66768a;
-    }
+    .muted{color:#66768a}
 
     .range{
       height:12px;
@@ -336,9 +303,7 @@ cat > index.html <<'EOF'
       font-weight:850;
     }
 
-    section{
-      padding:72px 0;
-    }
+    section{padding:72px 0}
 
     .section-head{
       text-align:center;
@@ -396,9 +361,7 @@ cat > index.html <<'EOF'
       margin-bottom:8px;
     }
 
-    .step p{
-      color:#66768a;
-    }
+    .step p{color:#66768a}
 
     .why{
       background:#fff;
@@ -437,9 +400,7 @@ cat > index.html <<'EOF'
       background:rgba(36,209,126,.18);
     }
 
-    .why-card h2{
-      color:#fff;
-    }
+    .why-card h2{color:#fff}
 
     .why-card p{
       color:#dce7f5;
@@ -473,9 +434,7 @@ cat > index.html <<'EOF'
       margin-bottom:8px;
     }
 
-    .benefit p{
-      color:#66768a;
-    }
+    .benefit p{color:#66768a}
 
     .cta{
       padding:0 0 76px;
@@ -490,9 +449,7 @@ cat > index.html <<'EOF'
       box-shadow:0 28px 72px rgba(18,55,111,.18);
     }
 
-    .cta-box h2{
-      color:#fff;
-    }
+    .cta-box h2{color:#fff}
 
     .cta-box p{
       color:#edf8ff;
@@ -525,65 +482,30 @@ cat > index.html <<'EOF'
     }
 
     @media(max-width:900px){
-      .links{
-        display:none;
-      }
-
-      .nav{
-        height:70px;
-      }
-
+      .links{display:none}
+      .nav{height:70px}
       .brand img{
         height:46px;
         max-width:165px;
       }
-
-      .hero{
-        padding:52px 0 36px;
-      }
-
+      .hero{padding:52px 0 36px}
       .hero-grid,
       .why-grid{
         grid-template-columns:1fr;
       }
-
-      h1{
-        font-size:44px;
-      }
-
-      h2{
-        font-size:32px;
-      }
-
-      .lead{
-        font-size:18px;
-      }
-
-      .amount{
-        font-size:40px;
-      }
-
+      h1{font-size:44px}
+      h2{font-size:32px}
+      .lead{font-size:18px}
+      .amount{font-size:40px}
       .stats,
       .steps,
       .benefits{
         grid-template-columns:1fr;
       }
-
-      .finance-card{
-        padding:24px;
-      }
-
-      .card-logo{
-        width:145px;
-      }
-
-      section{
-        padding:52px 0;
-      }
-
-      .btn{
-        padding:13px 18px;
-      }
+      .finance-card{padding:24px}
+      .card-logo{width:145px}
+      section{padding:52px 0}
+      .btn{padding:13px 18px}
     }
   </style>
 </head>
@@ -803,8 +725,3 @@ cat > index.html <<'EOF'
 
 </body>
 </html>
-EOF
-
-git add index.html logo.webp logo.jpg 2>/dev/null
-git commit -m "Rebuild Crystal website with official logo"
-git push
