@@ -4,214 +4,875 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>كريستال | حلول سيولة مالية عبر تابي وتمارا</title>
+
   <style>
-    body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f7faff;color:#102033;line-height:1.8}
-    *{box-sizing:border-box}
+    :root{
+      --navy:#102f63;
+      --navy2:#071f46;
+      --green:#22c779;
+      --green2:#08b86f;
+      --cyan:#17d9dc;
+      --bg:#f7faff;
+      --text:#102033;
+      --muted:#667085;
+      --border:#e7edf6;
+      --shadow:0 24px 70px rgba(16,47,99,.12);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Tahoma,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.8;
+      overflow-x:hidden;
+    }
     a{text-decoration:none}
     .container{width:min(1180px,92%);margin:auto}
-    header{position:sticky;top:0;background:white;border-bottom:1px solid #e7edf6;z-index:10}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand img{height:56px;max-width:210px;object-fit:contain}
-    .links{display:flex;gap:22px;font-weight:800}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand img{
+      height:58px;
+      max-width:220px;
+      object-fit:contain;
+      display:block;
+    }
+
+    .links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-weight:800;
+      font-size:15px;
+    }
+
     .links a{color:#42526b}
-    .btn{display:inline-flex;justify-content:center;align-items:center;border-radius:16px;padding:14px 24px;font-weight:900}
-    .btn-primary{background:#102f63;color:white}
-    .btn-green{background:#22c779;color:#062715}
-    .hero{padding:80px 0 50px;background:linear-gradient(180deg,#f7faff,#fff)}
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-    .badge{display:inline-block;background:#eafff4;color:#0d8e53;padding:8px 15px;border-radius:999px;font-weight:900;margin-bottom:18px}
-    h1{font-size:56px;line-height:1.18;color:#102f63;margin:0 0 18px}
-    .green{color:#22c779}
-    .lead{font-size:20px;color:#536273;margin-bottom:28px}
-    .actions{display:flex;gap:14px;flex-wrap:wrap}
-    .card{background:white;border:1px solid #e7edf6;border-radius:34px;padding:30px;box-shadow:0 24px 70px rgba(16,47,99,.12)}
-    .card img{width:170px;display:block;margin:0 0 20px auto}
-    .amount{font-size:48px;color:#102f63;font-weight:900}
-    .pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
-    .pay div{background:#f8fbff;border:1px solid #edf2f8;border-radius:18px;padding:14px;text-align:center;font-weight:900;color:#102f63}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:none;
+      border-radius:16px;
+      padding:14px 24px;
+      font-weight:900;
+      cursor:pointer;
+      white-space:nowrap;
+      transition:.25s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .btn-primary{
+      background:var(--navy);
+      color:#fff;
+      box-shadow:0 14px 34px rgba(16,47,99,.22);
+    }
+
+    .btn-green{
+      background:var(--green);
+      color:#062715;
+      box-shadow:0 14px 34px rgba(34,199,121,.24);
+    }
+
+    .top-whatsapp{
+      position:relative;
+      isolation:isolate;
+      background:#fff;
+      color:#0b8f55;
+      border-radius:999px;
+      padding:13px 24px;
+      overflow:hidden;
+      box-shadow:0 14px 34px rgba(16,47,99,.16);
+      border:1px solid rgba(34,199,121,.25);
+    }
+
+    .top-whatsapp::before{
+      content:"";
+      position:absolute;
+      inset:-3px;
+      border-radius:999px;
+      background:conic-gradient(from 0deg, transparent 0deg, transparent 95deg, #22c779 135deg, #17d9dc 170deg, transparent 230deg, transparent 360deg);
+      animation:spin 2.4s linear infinite;
+      z-index:-2;
+    }
+
+    .top-whatsapp::after{
+      content:"";
+      position:absolute;
+      inset:3px;
+      background:#fff;
+      border-radius:999px;
+      z-index:-1;
+    }
+
+    .top-whatsapp span{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .wa-small{
+      width:20px;
+      height:20px;
+      display:inline-block;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
+
+    .hero{
+      position:relative;
+      padding:84px 0 56px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(34,199,121,.15), transparent 28%),
+        radial-gradient(circle at 85% 85%, rgba(16,47,99,.12), transparent 32%),
+        linear-gradient(180deg,#f7faff,#fff);
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:44px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      background:#eafff4;
+      color:#0d8e53;
+      border:1px solid #c6f2dc;
+      border-radius:999px;
+      padding:8px 15px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    h1{
+      color:var(--navy);
+      font-size:58px;
+      line-height:1.18;
+      letter-spacing:-1px;
+      margin-bottom:18px;
+    }
+
+    .green{color:var(--green)}
+
+    .lead{
+      color:#536273;
+      font-size:20px;
+      max-width:670px;
+      margin-bottom:28px;
+    }
+
+    .actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+
+    .chips{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .chips span{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:9px 13px;
+      color:#58687a;
+      font-weight:800;
+      box-shadow:0 8px 24px rgba(16,47,99,.04);
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:34px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:linear-gradient(120deg,transparent 0%,rgba(34,199,121,.18) 40%,transparent 70%);
+      transform:translateX(-120%);
+      animation:shine 4.5s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    @keyframes shine{
+      0%,55%{transform:translateX(-120%)}
+      100%{transform:translateX(120%)}
+    }
+
+    .card-inner{position:relative;z-index:2}
+    .card img.logo-main{
+      width:180px;
+      display:block;
+      margin:0 0 20px auto;
+    }
+
+    .card-label{color:#667085;font-weight:900}
+    .amount{
+      font-size:48px;
+      color:var(--navy);
+      font-weight:1000;
+      line-height:1.2;
+      margin:8px 0;
+    }
+
+    .partners-title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin:22px 0 10px;
+      color:#667085;
+      font-weight:900;
+      font-size:14px;
+    }
+
+    .partner-logos{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin:14px 0 20px;
+    }
+
+    .partner-logo{
+      height:56px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:1000;
+      letter-spacing:-.5px;
+      box-shadow:0 12px 26px rgba(16,47,99,.10);
+      border:1px solid rgba(16,47,99,.08);
+      transform:translateZ(0);
+    }
+
+    .tabby-logo{
+      background:linear-gradient(135deg,#41e9b4,#29d99b);
+      color:#071f20;
+      font-size:31px;
+      font-family:Arial Black,Arial,Tahoma,sans-serif;
+      text-transform:lowercase;
+    }
+
+    .tamara-logo{
+      background:linear-gradient(135deg,#ffdf70,#ff9ebd 55%,#a6d8ff);
+      color:#111827;
+      font-size:29px;
+      font-family:Arial Black,Arial,Tahoma,sans-serif;
+      text-transform:lowercase;
+    }
+
     section{padding:70px 0}
+
     .head{text-align:center;margin-bottom:34px}
-    .head h2{font-size:40px;color:#102f63;margin:0 0 10px}
+    .head h2{font-size:40px;color:var(--navy);margin:0 0 10px}
     .head p{color:#667085;font-size:18px}
-    .features{background:white;border-top:1px solid #e7edf6;border-bottom:1px solid #e7edf6}
-    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .feature,.step{background:#f8fbff;border:1px solid #edf2f8;border-radius:26px;padding:24px}
-    .feature h3,.step h3{color:#102f63;margin:0 0 8px}
+
+    .features{
+      background:#fff;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+
+    .grid4{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .feature,.step{
+      background:#f8fbff;
+      border:1px solid #edf2f8;
+      border-radius:26px;
+      padding:24px;
+      transition:.28s ease;
+    }
+
+    .feature:hover,.step:hover{
+      transform:translateY(-4px);
+      box-shadow:0 22px 60px rgba(16,47,99,.12);
+    }
+
+    .feature-icon{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      background:#eafff4;
+      color:#0b8f55;
+      display:grid;
+      place-items:center;
+      margin-bottom:14px;
+      font-size:22px;
+      font-weight:1000;
+    }
+
+    .feature h3,.step h3{color:var(--navy);margin:0 0 8px}
     .feature p,.step p{color:#667085;margin:0}
-    .calculator-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center}
-    .dark{background:linear-gradient(135deg,#102f63,#081f46);color:white;border-radius:34px;padding:36px}
+
+    .calculator-wrap{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .dark{
+      background:linear-gradient(135deg,#102f63,#071f46);
+      color:white;
+      border-radius:34px;
+      padding:36px;
+      min-height:460px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      box-shadow:var(--shadow);
+    }
+
+    .dark::after{
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:rgba(34,199,121,.18);
+      left:-80px;
+      bottom:-90px;
+    }
+
     .dark h2{font-size:38px;margin:0 0 12px}
-    .dark p{color:#dce7f5;font-size:18px}
-    .calculator{background:white;border:1px solid #e7edf6;border-radius:34px;padding:30px;box-shadow:0 24px 70px rgba(16,47,99,.12)}
-    .calc-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .calc-title{font-size:28px;color:#102f63;font-weight:900}
-    .package-badge{background:#eafff4;color:#0d8e53;border-radius:999px;padding:8px 15px;font-weight:900}
-    .slider-box{background:#f8fbff;border:1px solid #edf2f8;border-radius:22px;padding:20px;margin:18px 0}
-    input[type=range]{direction:ltr;width:100%;accent-color:#22c779}
-    .nums{direction:ltr;display:flex;justify-content:space-between;color:#64748b;font-size:12px;font-weight:900}
-    .result-main{text-align:center;background:linear-gradient(135deg,#102f63,#081f46);color:white;border-radius:26px;padding:22px;margin:20px 0}
-    .receive{font-size:42px;font-weight:900}
-    .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
-    .result-item{background:#f8fbff;border:1px solid #edf2f8;border-radius:18px;padding:15px}
-    .result-item small{display:block;color:#64748b;font-weight:800}
-    .result-item strong{color:#102f63;font-size:22px}
-    .note{background:#fff8e7;border:1px solid #ffe6a3;color:#76520b;border-radius:16px;padding:12px 14px;font-weight:800;font-size:14px;margin:14px 0 18px}
-    .package-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:18px}
-    .package-mini{background:#f8fbff;border:1px solid #edf2f8;border-radius:18px;padding:14px 8px;text-align:center;cursor:pointer}
-    .package-mini.active{background:#eafff4;border-color:#22c779}
+    .dark p{color:#dce7f5;font-size:18px;position:relative;z-index:2}
+
+    .calculator-illustration{
+      position:relative;
+      z-index:2;
+      height:220px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(34,199,121,.30), transparent 25%),
+        radial-gradient(circle at 30% 70%, rgba(23,217,220,.20), transparent 30%);
+      display:grid;
+      place-items:center;
+      margin-top:28px;
+    }
+
+    .calc-phone{
+      width:130px;
+      height:170px;
+      border-radius:26px;
+      background:linear-gradient(160deg,#284f92,#0b1f3f);
+      border:3px solid rgba(255,255,255,.25);
+      transform:rotate(-12deg);
+      box-shadow:0 20px 40px rgba(0,0,0,.25);
+      position:relative;
+    }
+
+    .calc-phone::before{
+      content:"";
+      position:absolute;
+      inset:24px 18px;
+      border-radius:16px;
+      background:linear-gradient(180deg,#eafff4,#24d17e);
+      opacity:.9;
+    }
+
+    .coins{
+      position:absolute;
+      right:90px;
+      bottom:36px;
+      display:flex;
+      gap:5px;
+    }
+
+    .coin{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#22c779,#078f55);
+      box-shadow:0 8px 18px rgba(0,0,0,.22);
+    }
+
+    .calculator{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:34px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .calculator::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,transparent 0%,rgba(23,217,220,.10) 45%,transparent 80%);
+      transform:translateX(-120%);
+      animation:shine 5s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .calculator > *{position:relative;z-index:2}
+
+    .calc-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+    }
+
+    .calc-title{
+      font-size:28px;
+      color:var(--navy);
+      font-weight:1000;
+    }
+
+    .package-badge{
+      background:#eafff4;
+      color:#0d8e53;
+      border-radius:999px;
+      padding:8px 15px;
+      font-weight:1000;
+      border:1px solid #c8f4df;
+    }
+
+    .slider-box{
+      background:#f8fbff;
+      border:1px solid #edf2f8;
+      border-radius:22px;
+      padding:20px;
+      margin:18px 0;
+    }
+
+    input[type=range]{
+      direction:ltr;
+      width:100%;
+      accent-color:#22c779;
+    }
+
+    .nums{
+      direction:ltr;
+      display:flex;
+      justify-content:space-between;
+      color:#64748b;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .result-main{
+      text-align:center;
+      background:linear-gradient(135deg,#102f63,#071f46);
+      color:white;
+      border-radius:26px;
+      padding:22px;
+      margin:20px 0;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .result-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.20),transparent);
+      transform:translateX(-120%);
+      animation:shine 3.8s ease-in-out infinite;
+    }
+
+    .receive{
+      position:relative;
+      z-index:2;
+      font-size:42px;
+      font-weight:1000;
+    }
+
+    .result-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin:18px 0;
+    }
+
+    .result-item{
+      background:#f8fbff;
+      border:1px solid #edf2f8;
+      border-radius:18px;
+      padding:15px;
+      transition:.28s ease;
+    }
+
+    .result-item:hover{
+      transform:translateY(-3px);
+      box-shadow:0 14px 36px rgba(16,47,99,.10);
+    }
+
+    .result-item small{
+      display:block;
+      color:#64748b;
+      font-weight:800;
+    }
+
+    .result-item strong{
+      color:#102f63;
+      font-size:22px;
+    }
+
+    .note{
+      background:#fff8e7;
+      border:1px solid #ffe6a3;
+      color:#76520b;
+      border-radius:16px;
+      padding:12px 14px;
+      font-weight:800;
+      font-size:14px;
+      margin:14px 0 18px;
+    }
+
+    .package-grid{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .package-mini{
+      background:#f8fbff;
+      border:1px solid #edf2f8;
+      border-radius:18px;
+      padding:14px 8px;
+      text-align:center;
+      cursor:pointer;
+      transition:.28s ease;
+    }
+
+    .package-mini.active{
+      background:#eafff4;
+      border-color:#22c779;
+      box-shadow:0 14px 34px rgba(34,199,121,.16);
+    }
+
+    .package-mini:hover{
+      transform:translateY(-3px);
+    }
+
     .package-mini strong{display:block;color:#102f63}
     .package-mini span{color:#64748b;font-size:13px;font-weight:800}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .num{width:48px;height:48px;border-radius:17px;background:#102f63;color:white;display:grid;place-items:center;font-weight:900;margin-bottom:14px}
-    .cta-box{background:linear-gradient(135deg,#22c779,#102f63);border-radius:38px;padding:48px 28px;text-align:center;color:white}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .num{
+      width:48px;
+      height:48px;
+      border-radius:17px;
+      background:#102f63;
+      color:white;
+      display:grid;
+      place-items:center;
+      font-weight:1000;
+      margin-bottom:14px;
+    }
+
+    .cta-box{
+      background:linear-gradient(135deg,#22c779,#102f63);
+      border-radius:38px;
+      padding:48px 28px;
+      text-align:center;
+      color:white;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta-box::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.20),transparent);
+      transform:translateX(-120%);
+      animation:shine 4.5s ease-in-out infinite;
+    }
+
+    .cta-box > *{position:relative;z-index:2}
     .cta-box h2{font-size:38px;margin:0 0 12px}
-    footer{background:#0b1f3f;color:#cbd6e6;text-align:center;padding:34px 0}
-    .float-whatsapp{position:fixed;left:20px;bottom:20px;width:60px;height:60px;border-radius:50%;background:#22c779;color:#062715;display:grid;place-items:center;font-size:25px;font-weight:900;box-shadow:0 18px 46px rgba(34,199,121,.36)}
+
+    footer{
+      background:#0b1f3f;
+      color:#cbd6e6;
+      text-align:center;
+      padding:34px 0 110px;
+    }
+
+    .footer-logo{
+      width:150px;
+      margin:0 auto 14px;
+      display:block;
+    }
+
+    .float-whatsapp{
+      position:fixed;
+      left:22px;
+      bottom:22px;
+      z-index:999;
+      width:78px;
+      height:78px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#20d176;
+      box-shadow:0 0 0 0 rgba(34,199,121,.55), 0 18px 46px rgba(34,199,121,.42);
+      animation:pulse 1.65s infinite;
+      isolation:isolate;
+    }
+
+    .float-whatsapp::before{
+      content:"";
+      position:absolute;
+      inset:-7px;
+      border-radius:50%;
+      background:conic-gradient(from 0deg, transparent 0deg, transparent 80deg, #ffffff 115deg, #17d9dc 145deg, #22c779 170deg, transparent 220deg, transparent 360deg);
+      animation:spin 1.8s linear infinite;
+      z-index:-2;
+    }
+
+    .float-whatsapp::after{
+      content:"";
+      position:absolute;
+      inset:-15px;
+      border-radius:50%;
+      border:2px solid rgba(34,199,121,.45);
+      box-shadow:0 0 28px rgba(34,199,121,.65);
+      animation:pulseRing 1.8s ease-out infinite;
+      z-index:-3;
+    }
+
+    .float-whatsapp-inner{
+      width:66px;
+      height:66px;
+      border-radius:50%;
+      background:#20d176;
+      display:grid;
+      place-items:center;
+      border:4px solid #fff;
+      box-shadow:inset 0 0 12px rgba(255,255,255,.32);
+    }
+
+    .float-whatsapp svg{
+      width:36px;
+      height:36px;
+      fill:#fff;
+    }
+
+    .float-label{
+      position:fixed;
+      left:110px;
+      bottom:44px;
+      z-index:998;
+      background:#0b8f55;
+      color:#fff;
+      padding:8px 13px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:13px;
+      box-shadow:0 12px 26px rgba(16,47,99,.18);
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1);box-shadow:0 0 0 0 rgba(34,199,121,.55),0 18px 46px rgba(34,199,121,.42)}
+      70%{transform:scale(1.05);box-shadow:0 0 0 18px rgba(34,199,121,0),0 18px 46px rgba(34,199,121,.42)}
+      100%{transform:scale(1);box-shadow:0 0 0 0 rgba(34,199,121,0),0 18px 46px rgba(34,199,121,.42)}
+    }
+
+    @keyframes pulseRing{
+      0%{transform:scale(.88);opacity:.95}
+      100%{transform:scale(1.28);opacity:0}
+    }
+
     @media(max-width:900px){
       .links{display:none}
+      .nav{height:70px}
+      .brand img{height:46px;max-width:165px}
       .hero-grid,.calculator-wrap,.grid4,.steps,.result-grid{grid-template-columns:1fr}
       .package-grid{grid-template-columns:repeat(2,1fr)}
       h1{font-size:40px}
       .head h2,.dark h2,.cta-box h2{font-size:31px}
-      .brand img{height:46px}
+      .lead{font-size:18px}
+      .float-whatsapp{
+        width:72px;
+        height:72px;
+        left:18px;
+        bottom:18px;
+      }
+      .float-whatsapp-inner{
+        width:60px;
+        height:60px;
+      }
+      .float-label{
+        display:none;
+      }
+      footer{padding-bottom:105px}
     }
   </style>
-
-<style id="crystal-extra-effects">
-.pay-badge{
-  position:relative;
-  overflow:hidden;
-  font-size:0 !important;
-}
-.pay-badge::before{
-  content:"";
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:34px;
-  padding:4px 14px;
-  border-radius:12px;
-  font-size:18px;
-  font-weight:1000;
-  letter-spacing:.2px;
-}
-.pay-badge:nth-child(1)::before{
-  content:"tabby";
-  background:#3EE8B5;
-  color:#111827;
-}
-.pay-badge:nth-child(2)::before{
-  content:"tamara";
-  background:linear-gradient(90deg,#F8E18D,#F2A7C3);
-  color:#111827;
-}
-.card,.calculator,.feature,.step,.result-item,.package-mini{
-  transition:.28s ease;
-}
-.card:hover,.calculator:hover,.feature:hover,.step:hover,.package-mini:hover{
-  transform:translateY(-4px);
-  box-shadow:0 28px 80px rgba(16,47,99,.16);
-}
-.result-main{
-  position:relative;
-  overflow:hidden;
-}
-.result-main::after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background:rgba(34,199,121,.18);
-  left:-70px;
-  bottom:-90px;
-}
-.receive{
-  position:relative;
-  z-index:2;
-}
-.float-whatsapp{
-  width:auto !important;
-  min-width:150px;
-  height:56px !important;
-  border-radius:999px !important;
-  padding:0 18px;
-  gap:8px;
-  font-size:16px !important;
-}
-.float-whatsapp::before{
-  content:"☎";
-  font-size:22px;
-}
-.float-whatsapp span{
-  font-weight:900;
-}
-@media(max-width:900px){
-  .float-whatsapp{
-    min-width:138px;
-    height:52px !important;
-    left:14px !important;
-    bottom:14px !important;
-  }
-}
-</style>
-
 </head>
+
 <body>
 
 <header>
   <div class="container nav">
-    <a class="brand" href="#home"><img src="logo.webp" alt="شعار كريستال"></a>
+    <a class="brand" href="#home">
+      <img src="logo.webp" alt="شعار كريستال">
+    </a>
+
     <nav class="links">
       <a href="#home">الرئيسية</a>
       <a href="#features">المميزات</a>
       <a href="#calculator">الحاسبة</a>
-      <a href="#steps">كيف أطلب</a>
+      <a href="#steps">كيف أطلب؟</a>
     </nav>
-    <a class="btn btn-primary" id="headerWhatsapp" href="https://wa.me/966507097636">تواصل واتساب</a>
+
+    <a class="top-whatsapp" id="headerWhatsapp" href="https://wa.me/966507097636">
+      <span>
+        <svg class="wa-small" viewBox="0 0 32 32" aria-hidden="true">
+          <path fill="#0b8f55" d="M16.04 3C9.43 3 4.05 8.38 4.05 14.99c0 2.1.55 4.16 1.6 5.97L4 29l8.24-1.61c1.74.95 3.7 1.45 5.8 1.45 6.61 0 11.99-5.38 11.99-11.99S22.65 3 16.04 3Zm0 23.63c-1.78 0-3.49-.46-4.99-1.33l-.36-.21-4.23.83.85-4.12-.23-.38a9.69 9.69 0 0 1-1.5-5.16c0-5.34 4.34-9.68 9.68-9.68s9.68 4.34 9.68 9.68-4.34 9.68-9.68 9.68Zm5.31-7.22c-.29-.15-1.72-.85-1.99-.94-.27-.1-.47-.15-.67.15-.2.29-.77.94-.94 1.13-.17.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.08 1.72-.7 1.96-1.38.24-.67.24-1.25.17-1.38-.07-.12-.27-.2-.56-.35Z"/>
+        </svg>
+        تواصل واتساب
+      </span>
+    </a>
   </div>
 </header>
 
 <main id="home">
+
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <div class="badge">حلول سيولة مالية عبر تابي وتمارا</div>
         <h1>نوفر لك سيولة مالية<br>تصل إلى <span class="green">30,000 ريال</span></h1>
         <p class="lead">اختر الباقة المناسبة، اعرف القسط الشهري والمبلغ المتوقع استلامه، ثم أكمل طلبك بسهولة عبر واتساب.</p>
+
         <div class="actions">
           <a class="btn btn-green" href="#calculator">احسب سيولتك الآن</a>
           <a class="btn btn-primary" href="#steps">كيف أطلب؟</a>
         </div>
+
+        <div class="chips">
+          <span>عبر تابي وتمارا</span>
+          <span>باقات واضحة</span>
+          <span>6 أقساط شهرية</span>
+        </div>
       </div>
+
       <div class="card">
-        <img src="logo.webp" alt="شعار كريستال">
-        <div>حد السيولة</div>
-        <div class="amount">30,000 ر.س</div>
-        <p>شاهد تفاصيل القسط والمبلغ المتوقع استلامه قبل التواصل.</p>
-        <div class="pay"><div>tabby</div><div>tamara</div></div>
-        <a class="btn btn-green" style="width:100%" href="#calculator">ابدأ بالحاسبة</a>
+        <div class="card-inner">
+          <img class="logo-main" src="logo.webp" alt="شعار كريستال">
+          <div class="card-label">حد السيولة</div>
+          <div class="amount">30,000 ر.س</div>
+          <p>شاهد تفاصيل القسط والمبلغ المتوقع استلامه قبل التواصل.</p>
+
+          <div class="partners-title">شركاؤنا</div>
+          <div class="partner-logos">
+            <div class="partner-logo tabby-logo">tabby</div>
+            <div class="partner-logo tamara-logo">tamara</div>
+          </div>
+
+          <a class="btn btn-green" style="width:100%" href="#calculator">ابدأ بالحاسبة</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="features" id="features">
     <div class="container">
-      <div class="head"><h2>حلول واضحة وسهلة للسيولة</h2><p>شرح مباشر، خطوات واضحة، وحاسبة قبل التواصل.</p></div>
+      <div class="head">
+        <h2>حلول واضحة وسهلة للسيولة</h2>
+        <p>شرح مباشر، خطوات واضحة، وحاسبة قبل التواصل.</p>
+      </div>
+
       <div class="grid4">
-        <div class="feature"><h3>باقات محددة</h3><p>كل باقة توضّح مبلغ الاستلام والقسط والإجمالي.</p></div>
-        <div class="feature"><h3>تواصل مباشر</h3><p>الطلب ينتقل إلى واتساب برسالة جاهزة.</p></div>
-        <div class="feature"><h3>6 أقساط</h3><p>كل الباقات مبنية على 6 أقساط شهرية.</p></div>
-        <div class="feature"><h3>سيولة مرنة</h3><p>اختر الباقة حسب المبلغ الذي ترغب باستلامه.</p></div>
+        <div class="feature">
+          <div class="feature-icon">▣</div>
+          <h3>باقات محددة</h3>
+          <p>كل باقة توضّح مبلغ الاستلام والقسط والإجمالي.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">☎</div>
+          <h3>تواصل مباشر</h3>
+          <p>الطلب ينتقل إلى واتساب برسالة جاهزة.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">6</div>
+          <h3>6 أقساط</h3>
+          <p>كل الباقات مبنية على 6 أقساط شهرية.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">ر.س</div>
+          <h3>سيولة مرنة</h3>
+          <p>اختر الباقة حسب المبلغ الذي ترغب باستلامه.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="calculator">
     <div class="container calculator-wrap">
+
       <div class="dark">
-        <h2>اسحب الشريط واختر الباقة</h2>
-        <p>الحاسبة تعرض للعميل المبلغ المتوقع استلامه، القسط الشهري، عدد الأقساط، وإجمالي المبلغ.</p>
+        <div>
+          <h2>اسحب الشريط واختر الباقة</h2>
+          <p>الحاسبة تعرض للعميل المبلغ المتوقع استلامه، القسط الشهري، عدد الأقساط، وإجمالي المبلغ.</p>
+        </div>
+
+        <div class="calculator-illustration">
+          <div class="calc-phone"></div>
+          <div class="coins">
+            <div class="coin"></div>
+            <div class="coin"></div>
+            <div class="coin"></div>
+          </div>
+        </div>
       </div>
 
       <div class="calculator">
@@ -241,15 +902,29 @@
         </div>
 
         <div class="note">ملاحظة: يتم استكمال الطلب عبر واتساب، والقبول حسب البيانات والتقييم.</div>
-        <a class="btn btn-green" id="whatsappPackage" style="width:100%" href="https://wa.me/966507097636">أطلب هذه الباقة عبر واتساب</a>
+
+        <div class="partner-logos">
+          <div class="partner-logo tabby-logo">tabby</div>
+          <div class="partner-logo tamara-logo">tamara</div>
+        </div>
+
+        <a class="btn btn-green" id="whatsappPackage" style="width:100%" href="https://wa.me/966507097636">
+          أطلب هذه الباقة عبر واتساب
+        </a>
+
         <div class="package-grid" id="packageGrid"></div>
       </div>
+
     </div>
   </section>
 
   <section id="steps">
     <div class="container">
-      <div class="head"><h2>طريقة الطلب في 4 خطوات</h2><p>خطوات بسيطة وواضحة من اختيار الباقة حتى متابعة الطلب.</p></div>
+      <div class="head">
+        <h2>طريقة الطلب في 4 خطوات</h2>
+        <p>خطوات بسيطة وواضحة من اختيار الباقة حتى متابعة الطلب.</p>
+      </div>
+
       <div class="steps">
         <div class="step"><div class="num">01</div><h3>اختر الباقة</h3><p>استخدم الحاسبة وحدد الباقة المناسبة لك.</p></div>
         <div class="step"><div class="num">02</div><h3>تواصل واتساب</h3><p>اضغط زر واتساب، وستصلنا تفاصيل الباقة.</p></div>
@@ -266,12 +941,25 @@
       <a class="btn btn-green" id="ctaWhatsapp" href="https://wa.me/966507097636">تواصل واتساب</a>
     </div>
   </section>
+
 </main>
 
-<a class="float-whatsapp" id="floatWhatsapp" href="https://wa.me/966507097636"><span>تواصل واتساب</span></a>
+<a class="float-whatsapp" id="floatWhatsapp" href="https://wa.me/966507097636" aria-label="تواصل واتساب">
+  <span class="float-whatsapp-inner">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16.04 3C9.43 3 4.05 8.38 4.05 14.99c0 2.1.55 4.16 1.6 5.97L4 29l8.24-1.61c1.74.95 3.7 1.45 5.8 1.45 6.61 0 11.99-5.38 11.99-11.99S22.65 3 16.04 3Zm0 23.63c-1.78 0-3.49-.46-4.99-1.33l-.36-.21-4.23.83.85-4.12-.23-.38a9.69 9.69 0 0 1-1.5-5.16c0-5.34 4.34-9.68 9.68-9.68s9.68 4.34 9.68 9.68-4.34 9.68-9.68 9.68Zm5.31-7.22c-.29-.15-1.72-.85-1.99-.94-.27-.1-.47-.15-.67.15-.2.29-.77.94-.94 1.13-.17.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49s1.06 2.88 1.21 3.08c.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.08 1.72-.7 1.96-1.38.24-.67.24-1.25.17-1.38-.07-.12-.27-.2-.56-.35Z"/>
+    </svg>
+  </span>
+</a>
+<div class="float-label">تواصل واتساب</div>
 
 <footer>
-  <div class="container">كريستال — حلول سيولة مالية عبر تابي وتمارا.<br>© 2026 كريستال. جميع الحقوق محفوظة.</div>
+  <div class="container">
+    <img class="footer-logo" src="logo.webp" alt="شعار كريستال">
+    كريستال — حلول سيولة مالية عبر تابي وتمارا.
+    <br>
+    © 2026 كريستال. جميع الحقوق محفوظة.
+  </div>
 </footer>
 
 <script>
@@ -284,6 +972,7 @@ const packages=[
 {id:6,receive:7700,monthly:1350,installments:6,total:8100},
 {id:7,receive:10300,monthly:1800,installments:6,total:10800}
 ];
+
 const whatsappNumber="966507097636";
 const packageRange=document.getElementById("packageRange");
 const packageName=document.getElementById("packageName");
@@ -298,7 +987,10 @@ const ctaWhatsapp=document.getElementById("ctaWhatsapp");
 const floatWhatsapp=document.getElementById("floatWhatsapp");
 const packageGrid=document.getElementById("packageGrid");
 
-function formatSAR(value){return value.toLocaleString("ar-SA")+" ريال";}
+function formatSAR(value){
+  return value.toLocaleString("ar-SA")+" ريال";
+}
+
 function buildWhatsappLink(pkg){
 const message=`السلام عليكم
 أرغب بالتقديم على الباقة رقم ${pkg.id}
@@ -309,8 +1001,10 @@ const message=`السلام عليكم
 إجمالي المبلغ: ${formatSAR(pkg.total)}
 
 أرغب باستكمال الطلب.`;
+
 return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
+
 function renderPackageGrid(){
 packageGrid.innerHTML="";
 packages.forEach(pkg=>{
@@ -327,6 +1021,7 @@ document.getElementById("calculator").scrollIntoView({behavior:"smooth",block:"c
 packageGrid.appendChild(item);
 });
 }
+
 function updatePackage(){
 const selectedId=Number(packageRange.value);
 const pkg=packages.find(item=>item.id===selectedId);
@@ -345,6 +1040,7 @@ document.querySelectorAll(".package-mini").forEach(item=>{
 item.classList.toggle("active",Number(item.dataset.id)===pkg.id);
 });
 }
+
 packageRange.addEventListener("input",updatePackage);
 renderPackageGrid();
 updatePackage();
