@@ -76,6 +76,86 @@
       .brand img{height:46px}
     }
   </style>
+
+<style id="crystal-extra-effects">
+.pay-badge{
+  position:relative;
+  overflow:hidden;
+  font-size:0 !important;
+}
+.pay-badge::before{
+  content:"";
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:4px 14px;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:1000;
+  letter-spacing:.2px;
+}
+.pay-badge:nth-child(1)::before{
+  content:"tabby";
+  background:#3EE8B5;
+  color:#111827;
+}
+.pay-badge:nth-child(2)::before{
+  content:"tamara";
+  background:linear-gradient(90deg,#F8E18D,#F2A7C3);
+  color:#111827;
+}
+.card,.calculator,.feature,.step,.result-item,.package-mini{
+  transition:.28s ease;
+}
+.card:hover,.calculator:hover,.feature:hover,.step:hover,.package-mini:hover{
+  transform:translateY(-4px);
+  box-shadow:0 28px 80px rgba(16,47,99,.16);
+}
+.result-main{
+  position:relative;
+  overflow:hidden;
+}
+.result-main::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(34,199,121,.18);
+  left:-70px;
+  bottom:-90px;
+}
+.receive{
+  position:relative;
+  z-index:2;
+}
+.float-whatsapp{
+  width:auto !important;
+  min-width:150px;
+  height:56px !important;
+  border-radius:999px !important;
+  padding:0 18px;
+  gap:8px;
+  font-size:16px !important;
+}
+.float-whatsapp::before{
+  content:"☎";
+  font-size:22px;
+}
+.float-whatsapp span{
+  font-weight:900;
+}
+@media(max-width:900px){
+  .float-whatsapp{
+    min-width:138px;
+    height:52px !important;
+    left:14px !important;
+    bottom:14px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -109,7 +189,7 @@
         <div>حد السيولة</div>
         <div class="amount">30,000 ر.س</div>
         <p>شاهد تفاصيل القسط والمبلغ المتوقع استلامه قبل التواصل.</p>
-        <div class="pay"><div>Tabby</div><div>Tamara</div></div>
+        <div class="pay"><div>tabby</div><div>tamara</div></div>
         <a class="btn btn-green" style="width:100%" href="#calculator">ابدأ بالحاسبة</a>
       </div>
     </div>
@@ -188,7 +268,7 @@
   </section>
 </main>
 
-<a class="float-whatsapp" id="floatWhatsapp" href="https://wa.me/966507097636">☎</a>
+<a class="float-whatsapp" id="floatWhatsapp" href="https://wa.me/966507097636"><span>تواصل واتساب</span></a>
 
 <footer>
   <div class="container">كريستال — حلول سيولة مالية عبر تابي وتمارا.<br>© 2026 كريستال. جميع الحقوق محفوظة.</div>
